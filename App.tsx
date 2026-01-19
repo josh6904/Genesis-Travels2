@@ -380,10 +380,10 @@ const App: React.FC = () => {
             <Suspense fallback={<div className="pt-40 text-center font-serif italic text-stone-400">Syncing Ledger...</div>}>
               <Dashboard 
                 bookings={bookings} destinations={destinations} 
-                onDestinationsUpdate={d => {setDestinations(d); localStorage.setItem('genesis_destinations', JSON.stringify(d))}}
-                onBookingsUpdate={b => {setBookings(b); localStorage.setItem('genesis_bookings', JSON.stringify(b))}} 
+                onDestinationsUpdate={(d: Destination[]) => {setDestinations(d); localStorage.setItem('genesis_destinations', JSON.stringify(d))}}
+                onBookingsUpdate={(b: Booking[]) => {setBookings(b); localStorage.setItem('genesis_bookings', JSON.stringify(b))}} 
                 onLogout={() => setIsStaffAuthenticated(false)} currentView={crmView}
-                socialLinks={socialLinks} onSocialLinksUpdate={s => {setSocialLinks(s); localStorage.setItem('genesis_socials', JSON.stringify(s))}}
+                socialLinks={socialLinks} onSocialLinksUpdate={(s: SocialLink[]) => {setSocialLinks(s); localStorage.setItem('genesis_socials', JSON.stringify(s))}}
               />
             </Suspense>
           ) : (
@@ -393,7 +393,7 @@ const App: React.FC = () => {
       </main>
 
       <AnimatePresence>
-        {isLoginModalOpen && <UserLoginModal onLogin={u => {setCurrentUser(u); localStorage.setItem('genesis_user', JSON.stringify(u)); setIsLoginModalOpen(false); if(pendingDestination) setSelectedDestination(pendingDestination)}} onClose={() => setIsLoginModalOpen(false)} />}
+        {isLoginModalOpen && <UserLoginModal onLogin={(u: User) => {setCurrentUser(u); localStorage.setItem('genesis_user', JSON.stringify(u)); setIsLoginModalOpen(false); if(pendingDestination) setSelectedDestination(pendingDestination)}} onClose={() => setIsLoginModalOpen(false)} />}
         {selectedDestination && currentUser && <BookingModal destination={selectedDestination} onClose={() => setSelectedDestination(null)} onConfirm={handleBookingConfirm} />}
         {activeBooking && <ConfirmationView booking={activeBooking} destination={destinations.find(d => d.id === activeBooking.destinationId)!} onClose={() => setActiveBooking(null)} />}
         {isCartOpen && currentUser && <CartModal bookings={userBookings} destinations={destinations} onClose={() => setIsCartOpen(false)} onCancelBooking={handleCancelBooking} />}
