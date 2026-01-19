@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo, useCallback, Suspense, lazy, useRef } from 'react';
 import Navigation from './components/Navigation';
 import BookingModal from './components/BookingModal';
@@ -123,7 +124,7 @@ const App: React.FC = () => {
     <div className="space-y-0">
       <section className="min-h-[70vh] md:min-h-[90vh] flex flex-col md:flex-row items-center px-6 md:px-12 lg:px-24 gap-12 bg-white relative pt-28 md:pt-40 pb-16 overflow-hidden">
         <div className="w-full md:w-1/2 space-y-6 md:space-y-8 z-10 text-center md:text-left">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 bg-stone-50 px-3 py-1.5 rounded-full border border-stone-100">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="indie-blob inline-flex items-center gap-2 bg-stone-50 px-3 py-1.5 rounded-full border border-stone-100">
             <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-[#d4a373]">Crafted in Kenya</span>
           </motion.div>
           <motion.h1 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="text-4xl sm:text-5xl lg:text-8xl font-serif tracking-tighter leading-[0.9] text-stone-800">
