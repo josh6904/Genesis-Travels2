@@ -278,7 +278,7 @@ const App: React.FC = () => {
           <div className="w-full lg:w-1/2 space-y-6 md:space-y-10">
             <div className="space-y-4">
               <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] text-[#d4a373]">Oral History</span>
-              <h2 className="text-4xl md:text-7xl font-serif text-stone-800 leading-[0.9] tracking-tighter">Handed down, <br/><span className="italic text-[#5d6d4e]">not booked.</span></h2>
+              <h2 className="text-4xl md:text-7xl font-serif text-stone-800 text-stone-800 leading-[0.9] tracking-tighter">Handed down, <br/><span className="italic text-[#5d6d4e]">not booked.</span></h2>
               <p className="text-base md:text-lg text-stone-500 font-medium leading-relaxed max-w-md">
                 Every route we offer is vetted by village elders and third-generation trackers. We preserve the quiet paths that mass tourism forgot.
               </p>
