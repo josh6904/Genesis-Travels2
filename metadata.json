@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Copy of Genesis Travels Kenya",
+  "description": "Premium indie-style Kenyan travel packages with AI-powered itineraries and smart CRM tracking.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
