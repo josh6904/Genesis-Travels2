@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useMemo, useCallback, Suspense, lazy, useRef } from 'react';
-import Navigation from './components/Navigation.tsx';
-import BookingModal from './components/BookingModal.tsx';
-import ConfirmationView from './components/ConfirmationView.tsx';
-import CartModal from './components/CartModal.tsx';
-import { UserLoginModal, StaffLogin } from './components/Auth/AuthModals.tsx';
-import ContactSection from './components/ContactSection.tsx';
-import { INITIAL_DESTINATIONS, CONTACT_INFO } from './constants.tsx';
-import { Destination, Booking, User, SocialLink } from './types.ts';
+import Navigation from './components/Navigation';
+import BookingModal from './components/BookingModal';
+import ConfirmationView from './components/ConfirmationView';
+import CartModal from './components/CartModal';
+import { UserLoginModal, StaffLogin } from './components/Auth/AuthModals';
+import ContactSection from './components/ContactSection';
+import { INITIAL_DESTINATIONS, CONTACT_INFO } from './constants';
+import { Destination, Booking, User, SocialLink } from './types';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
-const Dashboard = lazy(() => import('./components/CRM/Dashboard.tsx'));
+const Dashboard = lazy(() => import('./components/CRM/Dashboard'));
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'crm'>('home');
