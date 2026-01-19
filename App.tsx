@@ -1,16 +1,15 @@
-
 import React, { useState, useEffect, useMemo, useCallback, Suspense, lazy, useRef } from 'react';
-import Navigation from './components/Navigation.tsx';
-import BookingModal from './components/BookingModal.tsx';
-import ConfirmationView from './components/ConfirmationView.tsx';
-import CartModal from './components/CartModal.tsx';
-import { UserLoginModal, StaffLogin } from './components/Auth/AuthModals.tsx';
-import ContactSection from './components/ContactSection.tsx';
-import { INITIAL_DESTINATIONS, CONTACT_INFO } from './constants.tsx';
-import { Destination, Booking, User, SocialLink } from './types.ts';
+import Navigation from './components/Navigation';
+import BookingModal from './components/BookingModal';
+import ConfirmationView from './components/ConfirmationView';
+import CartModal from './components/CartModal';
+import { UserLoginModal, StaffLogin } from './components/Auth/AuthModals';
+import ContactSection from './components/ContactSection';
+import { INITIAL_DESTINATIONS, CONTACT_INFO } from './constants';
+import { Destination, Booking, User, SocialLink } from './types';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
-const Dashboard = lazy(() => import('./components/CRM/Dashboard.tsx'));
+const Dashboard = lazy(() => import('./components/CRM/Dashboard'));
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'crm'>('home');
@@ -59,7 +58,6 @@ const App: React.FC = () => {
   const scrollToSection = useCallback((id: string) => {
     if (currentPage !== 'home') {
       setCurrentPage('home');
-      // Delay to allow component to mount before scrolling
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -123,7 +121,6 @@ const App: React.FC = () => {
 
   const renderHome = () => (
     <div className="space-y-0">
-      {/* 1. HERO (CLEAN) */}
       <section className="min-h-[70vh] md:min-h-[90vh] flex flex-col md:flex-row items-center px-6 md:px-12 lg:px-24 gap-12 bg-white relative pt-28 md:pt-40 pb-16 overflow-hidden">
         <div className="w-full md:w-1/2 space-y-6 md:space-y-8 z-10 text-center md:text-left">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 bg-stone-50 px-3 py-1.5 rounded-full border border-stone-100">
@@ -169,7 +166,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. TRUST BAR */}
       <div className="bg-[#2d2a26] py-6 md:py-8 border-y border-white/5 overflow-hidden">
         <div className="flex items-center gap-20 animate-marquee whitespace-nowrap">
           {[1,2,3,4].map(i => (
@@ -188,7 +184,6 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. JOURNEYS / TRIPS (CENTRE STAGE) */}
       <section id="journeys" ref={journeysRef} className="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-white">
         <div className="max-w-7xl mx-auto space-y-12 md:space-y-20">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 border-b border-stone-50 pb-12">
@@ -236,14 +231,12 @@ const App: React.FC = () => {
                     "{dest.description}"
                   </p>
                   
-                  {/* Sticky footer for the card */}
                   <div className="pt-6 border-t border-stone-200/50 mt-auto flex flex-col gap-4">
                     <div className="flex justify-between items-center">
                       <span className="text-[8px] font-black uppercase text-stone-300 tracking-widest">{dest.rating} Rating</span>
                       <span className="text-[8px] font-black uppercase text-stone-400 tracking-widest">{dest.country}</span>
                     </div>
                     
-                    {/* The Sticky "Book Now" Button */}
                     <button 
                       onClick={(e) => { e.stopPropagation(); handleDestinationClick(dest); }}
                       className="w-full bg-[#2d2a26] text-white py-4 rounded-full font-black text-[9px] uppercase tracking-[0.3em] shadow-lg group-hover:bg-[#5d6d4e] transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
@@ -259,7 +252,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. WHY GENESIS (STORIES) */}
       <section id="why" className="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-[#fcfaf7]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16 md:gap-24">
           <div className="space-y-6">
@@ -281,7 +273,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. HERITAGE (AUTHORITY) */}
       <section id="heritage" className="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 md:gap-24">
           <div className="w-full lg:w-1/2 space-y-6 md:space-y-10">
@@ -319,7 +310,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. IMPACT (SOCIAL PROOF) */}
       <section id="impact" className="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-[#5d6d4e] text-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
           <div className="w-full md:w-1/3">
@@ -343,7 +333,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. CONTACT (ACTION) */}
       <section id="contact-deck" className="bg-[#1a1816] text-stone-100 py-24 md:py-32 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-10">
@@ -387,7 +376,7 @@ const App: React.FC = () => {
               />
             </Suspense>
           ) : (
-            <StaffLogin onSuccess={() => setIsStaffAuthenticated(true)} onClose={() => setCurrentPage('home')} />
+            <StaffLogin onSuccess={() => setIsStaffAuthenticated(true)} onClose={() => handleNavigate('home')} />
           )
         )}
       </main>
